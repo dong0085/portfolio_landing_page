@@ -1,65 +1,116 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaLinkedin, FaInstagram, FaGithub, FaEnvelope } from 'react-icons/fa6';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className="min-h-screen relative flex items-center justify-center bg-slate-50 px-4 sm:px-8 overflow-hidden">
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob [animation-delay:2s]"></div>
+
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob [animation-delay:4s]"></div>
+      </div>
+
+      <div className="relative z-10 max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="relative group mx-auto md:mx-0 w-64 h-64 md:w-80 md:h-80">
+          <div className="absolute inset-0 bg-indigo-500 rounded-3xl transform -rotate-6 scale-105 transition-transform group-hover:rotate-0 opacity-20 md:opacity-100"></div>
+          <div className="absolute inset-0 border-2 border-indigo-500 rounded-3xl transform rotate-3 scale-105"></div>
+
+          <div className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/profile.jpeg"
+              alt="Profile Picture"
+              fill
+              className="object-cover"
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
-    </div>
+
+        <div className="text-center md:text-left space-y-6">
+          <div className="space-y-2">
+            <h2 className="text-indigo-600 font-medium tracking-wide uppercase text-sm">
+              Hello, I&apos;m Eric
+            </h2>
+
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+              Building things for{' '}
+              <Link
+                href="/web"
+                className="inline-block text-indigo-600 underline decoration-wavy decoration-indigo-800 underline-offset-4 decoration-2 hover:scale-110 transition-transform duration-200 ease-out">
+                web
+              </Link>{' '}
+              &{' '}
+              <Link
+                href="/mobile"
+                className="inline-block text-indigo-600 underline decoration-wavy decoration-indigo-800 underline-offset-4 decoration-2 hover:scale-110 transition-transform duration-200 ease-out">
+                mobile
+              </Link>
+              .
+            </h1>
+          </div>
+
+          <p className="text-slate-600 text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+            I&apos;m a student at Algonquin College passionate about crafting
+            clean user experiences. When I&apos;m not coding, I&apos;m exploring
+            the city through the lens of my camera.
+          </p>
+
+          <div className="flex items-center justify-center md:justify-start gap-6 pt-2">
+            <SocialLink
+              href="https://linkedin.com/in/yourprofile"
+              icon={<FaLinkedin size={28} />}
+              label="LinkedIn"
+            />
+            <SocialLink
+              href="https://instagram.com/yourprofile"
+              icon={<FaInstagram size={28} />}
+              label="Instagram"
+            />
+            <SocialLink
+              href="https://github.com/yourprofile"
+              icon={<FaGithub size={28} />}
+              label="GitHub"
+            />
+            <SocialLink
+              href="mailto:you@example.com"
+              icon={<FaEnvelope size={28} />}
+              label="Email"
+            />
+          </div>
+
+          <div className="pt-4">
+            <Link
+              href="/projects"
+              className="inline-block px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors shadow-lg shadow-indigo-500/20">
+              View My Work
+            </Link>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function SocialLink({
+  href,
+  icon,
+  label,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-slate-400 hover:text-indigo-600 hover:scale-110 transition-all duration-300"
+      aria-label={label}>
+      {icon}
+    </a>
   );
 }
