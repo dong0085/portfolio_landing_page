@@ -36,23 +36,23 @@ export default async function Home({ params }: { params: { lang: string } }) {
         <div className="text-center md:text-left space-y-6">
           <div className="space-y-2">
             <h2 className="text-[#1E4D8F] font-medium tracking-wide uppercase text-sm">
-              Hello, I&apos;m Eric
+              {copy.greeting}
             </h2>
 
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-              Building things for{' '}
+              {copy.headlinePrefix}{' '}
               <Link
                 href={`/${lang}/web`}
                 className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#163B6E] underline-offset-4 decoration-2 hover:scale-110 transition-transform duration-200 ease-out">
-                web
+                {copy.web}
               </Link>{' '}
               &{' '}
               <Link
                 href={`/${lang}/mobile`}
                 className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#163B6E] underline-offset-4 decoration-2 hover:scale-110 transition-transform duration-200 ease-out">
-                mobile
+                {copy.mobile}
               </Link>
-              .
+              {lang === 'cn' ? '构建产品' : '.'}
             </h1>
           </div>
 
