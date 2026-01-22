@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Google_Sans, Anek_Latin, Noto_Sans_SC } from 'next/font/google';
+import { Inter, Anek_Latin, Noto_Sans_SC } from 'next/font/google';
 import './globals.css';
 
 const anekLatin = Anek_Latin({
@@ -7,8 +7,8 @@ const anekLatin = Anek_Latin({
   subsets: ['latin'],
 });
 
-const googleSans = Google_Sans({
-  variable: '--font-google-sans',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
 });
 
@@ -20,6 +20,14 @@ const notoSansSc = Noto_Sans_SC({
 export const metadata: Metadata = {
   title: 'Eric (Cheng)',
   description: "Eric's landing page",
+  icons: {
+    icon: [
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon.ico', type: 'image/x-icon' },
+    ],
+    apple: '/favicon/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${anekLatin.variable} ${googleSans.variable} ${notoSansSc.variable} antialiased`}>
+        className={`${anekLatin.variable} ${inter.variable} ${notoSansSc.variable} antialiased`}>
         {children}
       </body>
     </html>
