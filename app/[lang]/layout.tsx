@@ -2,11 +2,7 @@ import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import HtmlLang from '../components/HtmlLang';
 
-const locales = ['en', 'fr', 'cn'] as const;
-
-function toHtmlLang(locale: string) {
-  return locale === 'cn' ? 'zh-CN' : locale;
-}
+const locales = ['en', 'fr', 'zh-CN'] as const;
 
 export default async function LangLayout({
   children,
@@ -21,12 +17,10 @@ export default async function LangLayout({
     notFound();
   }
 
-  const htmlLang = toHtmlLang(lang);
-
   return (
     <>
-      <HtmlLang lang={htmlLang} />
-      <div lang={htmlLang} className="min-h-screen">
+      <HtmlLang lang={lang} />
+      <div lang={lang} className="min-h-screen">
         {children}
       </div>
     </>

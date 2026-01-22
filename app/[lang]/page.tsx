@@ -13,14 +13,17 @@ export default async function Home({ params }: { params: { lang: string } }) {
       <FloatingNav lang={lang} />
       <main className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4 sm:px-8 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          <div className="absolute top-[10%] right-[15%] w-96 h-96 bg-[#1E4D8F]/5 rounded-[40%_60%_70%_30%/60%_30%_70%_40%] shadow-lg animate-float-slow"></div>
-          <div className="absolute bottom-[20%] left-[10%] w-80 h-80 bg-[#1E4D8F]/5 rotate-45 shadow-lg animate-float-slow [animation-delay:1s]"></div>
+          {/* Layer 1 - Deepest */}
+          <div className="absolute top-[10%] right-[15%] w-64 h-64 md:w-96 md:h-96 bg-[#1E4D8F]/5 rounded-[40%_60%_70%_30%/60%_30%_70%_40%] shadow-lg animate-float-slow"></div>
+          <div className="absolute bottom-[20%] left-[10%] w-56 h-56 md:w-80 md:h-80 bg-[#1E4D8F]/5 rotate-45 shadow-lg animate-float-slow [animation-delay:1s]"></div>
 
-          <div className="absolute top-[30%] left-[20%] w-64 h-64 bg-[#1E4D8F]/8 rounded-full shadow-xl animate-float-medium"></div>
-          <div className="absolute bottom-[15%] right-[25%] w-72 h-72 bg-[#1E4D8F]/8 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] shadow-xl animate-float-medium [animation-delay:2s]"></div>
+          {/* Layer 2 - Middle */}
+          <div className="hidden md:block absolute top-[30%] left-[20%] w-64 h-64 bg-[#1E4D8F]/8 rounded-full shadow-xl animate-float-medium"></div>
+          <div className="absolute bottom-[15%] right-[25%] w-48 h-48 md:w-72 md:h-72 bg-[#1E4D8F]/8 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] shadow-xl animate-float-medium [animation-delay:2s]"></div>
 
-          <div className="absolute top-[50%] right-[10%] w-48 h-48 bg-[#1E4D8F]/12 rotate-12 shadow-2xl animate-float-fast"></div>
-          <div className="absolute top-[15%] left-[40%] w-56 h-56 bg-[#1E4D8F]/12 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] shadow-2xl animate-float-fast [animation-delay:1.5s]"></div>
+          {/* Layer 3 - Front */}
+          <div className="hidden md:block absolute top-[50%] right-[10%] w-48 h-48 bg-[#1E4D8F]/12 rotate-12 shadow-2xl animate-float-fast"></div>
+          <div className="absolute top-[15%] left-[40%] w-40 h-40 md:w-56 md:h-56 bg-[#1E4D8F]/12 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] shadow-2xl animate-float-fast [animation-delay:1.5s]"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -38,7 +41,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
               />
             </div>
           </div>
-
+          {/* Salut */}
           <div className="text-center md:text-left space-y-6">
             <div className="space-y-2">
               <h2 className="text-[#1E4D8F] font-medium tracking-wide uppercase text-sm">
@@ -58,7 +61,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
                   className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#163B6E] underline-offset-4 decoration-2 hover:scale-110 transition-transform duration-200 ease-out">
                   {copy.mobile}
                 </Link>
-                {lang === 'cn' ? '构建产品' : '.'}
+                {lang === 'zh-CN' ? '构建产品' : '.'}
               </h1>
             </div>
 
@@ -66,6 +69,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
               {copy.intro}
             </p>
 
+            {/* Social Links */}
             <div className="flex items-center justify-center md:justify-start gap-6 pt-2">
               <SocialLink
                 href="https://linkedin.com/in/chengdong01"
@@ -93,7 +97,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
               <Link
                 href={`/${lang}/projects`}
                 className="inline-block px-6 py-3 bg-[#1E4D8F] text-white font-medium rounded-lg hover:bg-[#163B6E] transition-colors shadow-lg shadow-[#1E4D8F]/20">
-                View My Work
+                {copy.viewMyWork}
               </Link>
               <div
                 role="group"
