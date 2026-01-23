@@ -11,7 +11,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
   return (
     <>
       <FloatingNav lang={lang} />
-      <main className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4 sm:px-8 overflow-hidden">
+      <main className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4 sm:px-8 pb-24 md:pb-0 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           {/* Layer 1 - Deepest */}
           <div className="absolute top-[10%] right-[15%] w-64 h-64 md:w-96 md:h-96 bg-[#1E4D8F]/5 rounded-[40%_60%_70%_30%/60%_30%_70%_40%] shadow-lg animate-float-slow"></div>
