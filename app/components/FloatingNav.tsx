@@ -2,10 +2,52 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { FaHome, FaMobileAlt, FaDesktop } from 'react-icons/fa';
 
 export default function FloatingNav({ lang }: { lang: string }) {
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // 只在移动端启用滚动逻辑
+    if (!isMobile) return;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+
+      // 只有滚动距离超过20px才触发变化
+      if (scrollDifference < 20) return;
+
+      // 向下滚动超过20px时显示
+      if (currentScrollY > 20 && currentScrollY > lastScrollY) {
+        setIsVisible(true);
+      }
+      // 向上滚动超过20px时隐藏
+      else if (currentScrollY < lastScrollY) {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY, isMobile]);
 
   const navItems = [
     {
@@ -29,7 +71,14 @@ export default function FloatingNav({ lang }: { lang: string }) {
   ];
 
   return (
-    <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+    <nav
+      className={`fixed bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
+        isMobile
+          ? isVisible
+            ? 'translate-y-0 opacity-100'
+            : 'translate-y-24 opacity-0'
+          : 'translate-y-0 opacity-100'
+      }`}>
       <div className="flex items-center gap-2 bg-white/90 backdrop-blur-md rounded-full px-6 py-3 shadow-2xl border border-slate-200 ring-1 ring-[#1E4D8F]/10">
         {navItems.map((item) => (
           <Link
