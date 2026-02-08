@@ -1,0 +1,24 @@
+.spotlightMask {
+  mask-image: none;
+  -webkit-mask-image: none;
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  .spotlightMask {
+    opacity: 1;
+    --spotlight-radius: 300px;
+    mask-image: radial-gradient(
+      circle var(--spotlight-radius) at var(--x, 50%) var(--y, 50%),
+      black 0%,
+      black 50%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      circle var(--spotlight-radius) at var(--x, 50%) var(--y, 50%),
+      black 0%,
+      black 50%,
+      transparent 100%
+    );
+  }
+}

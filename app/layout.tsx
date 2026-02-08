@@ -22,8 +22,9 @@ export const metadata: Metadata = {
   description: "Eric's landing page",
   icons: {
     icon: [
-      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      // { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      // { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/cheng.svg', type: 'image/svg+xml' },
       { url: '/favicon/favicon.ico', type: 'image/x-icon' },
     ],
     apple: '/favicon/apple-touch-icon.png',
