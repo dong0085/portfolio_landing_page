@@ -12,7 +12,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
     <>
       <FloatingNav lang={lang} />
       <main className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4 sm:px-8 pt-16 pb-40 md:py-8  md:pb-8 overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
+        <div className="absolute z-2 inset-0 w-full h-full">
           {/* Layer 1 - Deepest */}
           <div className="absolute top-[10%] right-[15%] w-64 h-64 md:w-96 md:h-96 bg-[#1E4D8F]/5 rounded-[40%_60%_70%_30%/60%_30%_70%_40%] shadow-lg animate-float-slow"></div>
           <div className="absolute bottom-[20%] left-[10%] w-56 h-56 md:w-80 md:h-80 bg-[#1E4D8F]/5 rotate-45 shadow-lg animate-float-slow [animation-delay:1s]"></div>
@@ -25,6 +25,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
           <div className="hidden md:block absolute top-[50%] right-[10%] w-48 h-48 bg-[#1E4D8F]/12 rotate-12 shadow-2xl animate-float-fast"></div>
           <div className="absolute top-[15%] left-[40%] w-40 h-40 md:w-56 md:h-56 bg-[#1E4D8F]/12 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] shadow-2xl animate-float-fast [animation-delay:1.5s]"></div>
         </div>
+        <div className="absolute z-1 inset-0 w-full h-full"></div>
 
         <div className="relative z-10 max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative group mx-auto md:mx-0 w-64 h-64 md:w-80 md:h-80">

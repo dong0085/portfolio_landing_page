@@ -23,22 +23,17 @@ export default function FloatingNav({ lang }: { lang: string }) {
   }, []);
 
   useEffect(() => {
-    // 只在移动端启用滚动逻辑
     if (!isMobile) return;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const scrollDifference = Math.abs(currentScrollY - lastScrollY);
 
-      // 只有滚动距离超过20px才触发变化
       if (scrollDifference < 20) return;
 
-      // 向下滚动超过20px时显示
       if (currentScrollY > 20 && currentScrollY > lastScrollY) {
         setIsVisible(true);
-      }
-      // 向上滚动超过20px时隐藏
-      else if (currentScrollY < lastScrollY) {
+      } else if (currentScrollY < lastScrollY) {
         setIsVisible(false);
       }
 
