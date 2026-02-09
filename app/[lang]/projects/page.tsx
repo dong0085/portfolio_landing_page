@@ -1,7 +1,7 @@
 import FloatingNav from '../../components/FloatingNav';
-import WebContent from './WebContent';
+import ProjectsContent from './ProjectsContent';
 
-export default async function WebPage({
+export default async function ProjectsPage({
   params,
 }: {
   params: { lang: string };
@@ -12,7 +12,7 @@ export default async function WebPage({
     <>
       <FloatingNav lang={lang} />
       <main className="min-h-screen relative bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
-        <WebContent lang={lang} />
+        <ProjectsContent lang={lang} />
       </main>
     </>
   );

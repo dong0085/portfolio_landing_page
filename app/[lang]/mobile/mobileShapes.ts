@@ -1,0 +1,51 @@
+import type { ShapeDefinition } from '../../components/SpotlightBackground';
+
+export const mobileShapes: ShapeDefinition[] = [
+  {
+    position: 'top-[6%] right-[10%]',
+    size: 'w-28 h-52 md:w-36 md:h-64',
+    borderRadius: 'rounded-2xl',
+    baseColor: 'bg-[#1E4D8F]/5',
+    spotlightColor: 'bg-[#7C3AED]/15',
+    animation: 'animate-sway-slow',
+    extraClasses: 'shadow-lg',
+  },
+  {
+    position: 'top-[50%] left-[5%]',
+    size: 'w-24 h-44 md:w-32 md:h-56',
+    borderRadius: 'rounded-3xl',
+    baseColor: 'bg-[#1E4D8F]/6',
+    spotlightColor: 'bg-[#8B5CF6]/12',
+    animation: 'animate-sway-medium',
+    extraClasses: 'shadow-lg [animation-delay:1s]',
+  },
+  {
+    position: 'top-[18%] left-[12%]',
+    size: 'w-32 h-56 md:w-40 md:h-72',
+    borderRadius: 'rounded-2xl',
+    baseColor: 'bg-[#1E4D8F]/8',
+    spotlightColor: 'bg-[#A78BFA]/12',
+    animation: 'animate-sway-slow',
+    extraClasses: 'shadow-xl [animation-delay:3s]',
+    desktopOnly: true,
+  },
+  {
+    position: 'bottom-[10%] right-[8%]',
+    size: 'w-24 h-40 md:w-32 md:h-52',
+    borderRadius: 'rounded-3xl',
+    baseColor: 'bg-[#1E4D8F]/5',
+    spotlightColor: 'bg-[#C4B5FD]/10',
+    animation: 'animate-sway-medium',
+    extraClasses: 'shadow-xl [animation-delay:2s]',
+  },
+  {
+    position: 'top-[38%] right-[22%]',
+    size: 'w-20 h-36 md:w-28 md:h-48',
+    borderRadius: 'rounded-2xl',
+    baseColor: 'bg-[#1E4D8F]/6',
+    spotlightColor: 'bg-[#7C3AED]/10',
+    animation: 'animate-sway-slow',
+    extraClasses: 'shadow-md [animation-delay:4s]',
+    desktopOnly: true,
+  },
+];

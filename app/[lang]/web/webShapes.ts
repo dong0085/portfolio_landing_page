@@ -1,0 +1,51 @@
+import type { ShapeDefinition } from '../../components/SpotlightBackground';
+
+export const webShapes: ShapeDefinition[] = [
+  {
+    position: 'top-[8%] right-[8%]',
+    size: 'w-72 h-48 md:w-96 md:h-64',
+    borderRadius: 'rounded-xl',
+    baseColor: 'bg-[#1E4D8F]/5',
+    spotlightColor: 'bg-[#0891B2]/15',
+    animation: 'animate-drift-slow',
+    extraClasses: 'shadow-lg',
+  },
+  {
+    position: 'top-[55%] left-[3%]',
+    size: 'w-56 h-56 md:w-72 md:h-72',
+    borderRadius: 'rounded-lg',
+    baseColor: 'bg-[#1E4D8F]/6',
+    spotlightColor: 'bg-[#06B6D4]/12',
+    animation: 'animate-drift-medium',
+    extraClasses: 'shadow-lg [animation-delay:1s]',
+  },
+  {
+    position: 'top-[20%] left-[10%]',
+    size: 'w-64 h-40 md:w-80 md:h-52',
+    borderRadius: 'rounded-xl',
+    baseColor: 'bg-[#1E4D8F]/8',
+    spotlightColor: 'bg-[#14B8A6]/12',
+    animation: 'animate-drift-slow',
+    extraClasses: 'shadow-xl [animation-delay:3s]',
+    desktopOnly: true,
+  },
+  {
+    position: 'bottom-[8%] right-[5%]',
+    size: 'w-48 h-48 md:w-64 md:h-64',
+    borderRadius: 'rounded-md',
+    baseColor: 'bg-[#1E4D8F]/5',
+    spotlightColor: 'bg-[#2DD4BF]/10',
+    animation: 'animate-drift-medium',
+    extraClasses: 'shadow-xl [animation-delay:2s]',
+  },
+  {
+    position: 'top-[40%] right-[20%]',
+    size: 'w-40 h-28 md:w-56 md:h-36',
+    borderRadius: 'rounded-lg',
+    baseColor: 'bg-[#1E4D8F]/6',
+    spotlightColor: 'bg-[#0891B2]/10',
+    animation: 'animate-drift-slow',
+    extraClasses: 'shadow-md [animation-delay:4s]',
+    desktopOnly: true,
+  },
+];
