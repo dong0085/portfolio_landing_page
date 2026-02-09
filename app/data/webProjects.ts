@@ -24,4 +24,28 @@ export const webProjects: Project[] = [
     thumbnailSrc: '/profile.jpeg',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
   },
+  {
+    id: 'NamecardAssistant',
+    title: {
+      en: 'Business card scanner',
+      fr: 'Scanner de cartes de visite',
+      'zh-CN': '名片扫描助手',
+    },
+    description: {
+      en: `Snap a business card, let AI do the rest. Drop it in, extract, search — done in three steps.`,
+      fr: `Prenez une photo d'une carte de visite, laissez l'IA faire le reste. Déposez, extrayez, recherchez — le tout en trois étapes.`,
+      'zh-CN':
+        '拍摄名片，余下的交给 AI。上传、提取、搜索 —— 仅需三步，轻松搞定。',
+    },
+    thumbnailSrc: '/Images/namecard_assistant.jpg',
+    demoUrl: 'https://namecard-assistant.vercel.app/',
+    tags: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS 4',
+      'shadcn/ui',
+      'Framer Motion',
+    ],
+  },
 ];
