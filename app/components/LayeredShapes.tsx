@@ -59,14 +59,16 @@ export default function LayeredShapes({ lang }: Props) {
   return (
     <SpotlightBackground
       shapes={homeShapes}
-      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center py-12 md:py-20 overflow-x-hidden bg-slate-50">
+      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center py-12 md:py-20 overflow-x-hidden bg-slate-50"
+    >
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-5 gap-12 items-center px-6 md:px-12">
         {/* Profile Image Column */}
         <motion.div
           className="lg:col-span-2 flex justify-center lg:justify-end"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}>
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="relative group w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 shrink-0">
             <div className="absolute inset-0 bg-[#1E4D8F] rounded-3xl transform -rotate-6 scale-105 transition-transform group-hover:rotate-0 opacity-10 lg:opacity-100"></div>
             <div className="absolute inset-0 border-2 border-[#1E4D8F] rounded-3xl transform rotate-3 scale-105"></div>
@@ -88,7 +90,8 @@ export default function LayeredShapes({ lang }: Props) {
           className="lg:col-span-3 text-center lg:text-left space-y-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}>
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+        >
           <div className="space-y-4">
             <h2 className="text-[#1E4D8F] font-semibold tracking-[0.2em] uppercase text-xs sm:text-sm">
               {copy.greeting}
@@ -97,13 +100,15 @@ export default function LayeredShapes({ lang }: Props) {
               {copy.headlinePrefix}{' '}
               <Link
                 href={`/${lang}/web`}
-                className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#1E4D8F]/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200">
+                className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#1E4D8F]/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200"
+              >
                 {copy.web}
               </Link>{' '}
               &{' '}
               <Link
                 href={`/${lang}/mobile`}
-                className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#1E4D8F]/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200">
+                className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#1E4D8F]/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200"
+              >
                 {copy.mobile}
               </Link>
               {lang === 'zh-CN' ? '构建产品' : '.'}
@@ -131,7 +136,7 @@ export default function LayeredShapes({ lang }: Props) {
               label="GitHub"
             />
             <SocialLink
-              href="mailto:ericdc3365@example.com"
+              href="mailto:eric.cheng.dong@gmail.com"
               icon={<FaEnvelope size={28} />}
               label="Email"
             />
@@ -141,10 +146,12 @@ export default function LayeredShapes({ lang }: Props) {
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}>
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
               <Link
                 href={`/${lang}/projects`}
-                className="block w-full sm:w-auto text-center px-8 py-4 bg-[#1E4D8F] text-white font-bold rounded-xl hover:bg-[#163B6E] transition-colors shadow-xl shadow-[#1E4D8F]/25">
+                className="block w-full sm:w-auto text-center px-8 py-4 bg-[#1E4D8F] text-white font-bold rounded-xl hover:bg-[#163B6E] transition-colors shadow-xl shadow-[#1E4D8F]/25"
+              >
                 {copy.viewMyWork}
               </Link>
             </motion.div>
@@ -160,7 +167,8 @@ export default function LayeredShapes({ lang }: Props) {
                       isActive
                         ? 'bg-[#1E4D8F] text-white shadow-md'
                         : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
-                    }`}>
+                    }`}
+                  >
                     {option.label}
                   </Link>
                 );
@@ -188,7 +196,8 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       className="p-2 text-slate-400 hover:text-[#1E4D8F] hover:bg-[#1E4D8F]/5 rounded-full transition-all duration-300"
-      aria-label={label}>
+      aria-label={label}
+    >
       {icon}
     </a>
   );
