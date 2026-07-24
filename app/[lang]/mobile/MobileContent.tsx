@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import SpotlightBackground from '../../components/SpotlightBackground';
 import PageTransition from '../../components/PageTransition';
 import ProjectCard from '../../components/ProjectCard';
+import MobileEmptyState from '../../components/MobileEmptyState';
 import { mobileCopy } from '../../locales';
 import { mobileProjects } from '../../data/mobileProjects';
 import { mobileShapes } from './mobileShapes';
@@ -56,14 +57,7 @@ export default function MobileContent({ lang }: Props) {
             ))}
           </motion.div>
         ) : (
-          <div className="text-center py-20">
-            <motion.p
-              className="text-slate-400 text-lg font-light italic"
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
-              {copy.empty}
-            </motion.p>
-          </div>
+          <MobileEmptyState message={copy.empty} />
         )}
       </PageTransition>
     </SpotlightBackground>

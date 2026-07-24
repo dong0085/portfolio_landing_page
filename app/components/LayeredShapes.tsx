@@ -1,8 +1,15 @@
 'use client';
 
+import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from 'motion/react';
 import { homeCopy } from '../locales';
 import SpotlightBackground, {
   type ShapeDefinition,
@@ -55,6 +62,41 @@ const homeShapes: ShapeDefinition[] = [
 
 export default function LayeredShapes({ lang }: Props) {
   const copy = homeCopy[lang as keyof typeof homeCopy] ?? homeCopy.en;
+  const profileRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const smoothX = useSpring(pointerX, { stiffness: 160, damping: 22 });
+  const smoothY = useSpring(pointerY, { stiffness: 160, damping: 22 });
+  const photoX = useTransform(smoothX, [-1, 1], [-4, 4]);
+  const photoY = useTransform(smoothY, [-1, 1], [-4, 4]);
+  const photoRotateX = useTransform(smoothY, [-1, 1], [2.5, -2.5]);
+  const photoRotateY = useTransform(smoothX, [-1, 1], [-2.5, 2.5]);
+  const borderX = useTransform(smoothX, [-1, 1], [-6, 6]);
+  const borderY = useTransform(smoothY, [-1, 1], [-6, 6]);
+  const plateX = useTransform(smoothX, [-1, 1], [-10, 10]);
+  const plateY = useTransform(smoothY, [-1, 1], [-10, 10]);
+
+  const resetProfilePosition = () => {
+    pointerX.set(0);
+    pointerY.set(0);
+  };
+
+  const handleProfilePointerMove = (
+    event: React.PointerEvent<HTMLDivElement>,
+  ) => {
+    if (
+      shouldReduceMotion ||
+      event.pointerType !== 'mouse' ||
+      !profileRef.current
+    ) {
+      return;
+    }
+
+    const bounds = profileRef.current.getBoundingClientRect();
+    pointerX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 2);
+    pointerY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
+  };
 
   return (
     <SpotlightBackground
@@ -69,10 +111,41 @@ export default function LayeredShapes({ lang }: Props) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <div className="relative group w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 shrink-0">
-            <div className="absolute inset-0 bg-[#1E4D8F] rounded-3xl transform -rotate-6 scale-105 transition-transform group-hover:rotate-0 opacity-10 lg:opacity-100"></div>
-            <div className="absolute inset-0 border-2 border-[#1E4D8F] rounded-3xl transform rotate-3 scale-105"></div>
-            <div className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl">
+          <div
+            ref={profileRef}
+            onPointerMove={handleProfilePointerMove}
+            onPointerLeave={resetProfilePosition}
+            className="relative group w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 shrink-0"
+            style={{ perspective: '900px' }}>
+            <motion.div
+              aria-hidden="true"
+              className="absolute inset-0"
+              style={
+                shouldReduceMotion ? undefined : { x: plateX, y: plateY }
+              }>
+              <div className="absolute inset-0 bg-[#1E4D8F] rounded-3xl transform -rotate-6 scale-105 transition-transform group-hover:rotate-0 opacity-10 lg:opacity-100" />
+            </motion.div>
+            <motion.div
+              aria-hidden="true"
+              className="absolute inset-0"
+              style={
+                shouldReduceMotion ? undefined : { x: borderX, y: borderY }
+              }>
+              <div className="absolute inset-0 border-2 border-[#1E4D8F] rounded-3xl transform rotate-3 scale-105" />
+            </motion.div>
+            <motion.div
+              className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl"
+              style={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      x: photoX,
+                      y: photoY,
+                      rotateX: photoRotateX,
+                      rotateY: photoRotateY,
+                      transformStyle: 'preserve-3d',
+                    }
+              }>
               <Image
                 src="/profile.jpeg"
                 alt="Profile Picture"
@@ -81,7 +154,7 @@ export default function LayeredShapes({ lang }: Props) {
                 className="object-cover"
                 priority
               />
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 

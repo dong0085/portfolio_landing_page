@@ -30,46 +30,109 @@ export default function SpotlightBackground({
   const spotPos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
+    const container = containerRef.current;
+    if (!container) return;
+
+    const desktopQuery = window.matchMedia('(min-width: 768px)');
+    const reducedMotionQuery = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    );
+    let animationFrameId: number | null = null;
+    let isAnimating = false;
+
+    const centerSpotlight = () => {
+      const rect = container.getBoundingClientRect();
       mousePos.current = { x: rect.width / 2, y: rect.height / 2 };
       spotPos.current = { x: rect.width / 2, y: rect.height / 2 };
-    }
+      container.style.setProperty('--x', `${spotPos.current.x}px`);
+      container.style.setProperty('--y', `${spotPos.current.y}px`);
+    };
+
+    const stopAnimation = () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      animationFrameId = null;
+      isAnimating = false;
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth < 768 || !containerRef.current) return;
+      if (
+        !desktopQuery.matches ||
+        reducedMotionQuery.matches ||
+        document.hidden
+      ) {
+        return;
+      }
 
-      const rect = containerRef.current.getBoundingClientRect();
+      const rect = container.getBoundingClientRect();
       mousePos.current = {
         x: e.clientX - rect.left,
         y: e.clientY - rect.top,
       };
-    };
 
-    let animationFrameId: number;
+      if (!isAnimating) {
+        isAnimating = true;
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    };
 
     const animate = () => {
-      if (window.innerWidth >= 768 && containerRef.current) {
-        const lerpFactor = 0.1;
-
-        spotPos.current.x +=
-          (mousePos.current.x - spotPos.current.x) * lerpFactor;
-        spotPos.current.y +=
-          (mousePos.current.y - spotPos.current.y) * lerpFactor;
-
-        containerRef.current.style.setProperty('--x', `${spotPos.current.x}px`);
-        containerRef.current.style.setProperty('--y', `${spotPos.current.y}px`);
+      if (
+        !desktopQuery.matches ||
+        reducedMotionQuery.matches ||
+        document.hidden
+      ) {
+        stopAnimation();
+        return;
       }
 
-      animationFrameId = requestAnimationFrame(animate);
+      const deltaX = mousePos.current.x - spotPos.current.x;
+      const deltaY = mousePos.current.y - spotPos.current.y;
+      const lerpFactor = 0.1;
+
+      spotPos.current.x += deltaX * lerpFactor;
+      spotPos.current.y += deltaY * lerpFactor;
+
+      container.style.setProperty('--x', `${spotPos.current.x}px`);
+      container.style.setProperty('--y', `${spotPos.current.y}px`);
+
+      if (Math.abs(deltaX) + Math.abs(deltaY) > 0.2) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        container.style.setProperty('--x', `${mousePos.current.x}px`);
+        container.style.setProperty('--y', `${mousePos.current.y}px`);
+        spotPos.current = { ...mousePos.current };
+        animationFrameId = null;
+        isAnimating = false;
+      }
     };
 
+    const handleModeChange = () => {
+      stopAnimation();
+      centerSpotlight();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAnimation();
+      }
+    };
+
+    centerSpotlight();
     window.addEventListener('mousemove', handleMouseMove);
-    animate();
+    window.addEventListener('resize', handleModeChange);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    desktopQuery.addEventListener('change', handleModeChange);
+    reducedMotionQuery.addEventListener('change', handleModeChange);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', handleModeChange);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      desktopQuery.removeEventListener('change', handleModeChange);
+      reducedMotionQuery.removeEventListener('change', handleModeChange);
+      stopAnimation();
     };
   }, []);
 

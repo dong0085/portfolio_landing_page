@@ -16,7 +16,7 @@ export default function ProjectCard({ project, lang, labels }: Props) {
 
   return (
     <motion.div
-      className="bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col h-full"
+      className="group bg-white border border-slate-200 hover:border-[#1E4D8F]/30 rounded-xl shadow-sm hover:shadow-md transition-[border-color,box-shadow] duration-300 overflow-hidden flex flex-col h-full"
       whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
       <div className="relative aspect-video bg-slate-100">
@@ -25,7 +25,11 @@ export default function ProjectCard({ project, lang, labels }: Props) {
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-[#1E4D8F]/30 via-[#1E4D8F]/5 to-transparent opacity-40 transition-opacity duration-500 group-hover:opacity-0"
         />
       </div>
 
@@ -57,7 +61,12 @@ export default function ProjectCard({ project, lang, labels }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 mt-1 text-sm font-semibold text-[#1E4D8F] hover:underline">
-            {labels.viewDemo} &rarr;
+            {labels.viewDemo}
+            <span
+              aria-hidden="true"
+              className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+              &rarr;
+            </span>
           </a>
         )}
       </div>

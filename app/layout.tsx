@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Anek_Latin, Noto_Sans_SC } from 'next/font/google';
+import MotionProvider from './components/MotionProvider';
 import './globals.css';
 
 const anekLatin = Anek_Latin({
@@ -40,7 +41,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${anekLatin.variable} ${inter.variable} ${notoSansSc.variable} antialiased`}>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
