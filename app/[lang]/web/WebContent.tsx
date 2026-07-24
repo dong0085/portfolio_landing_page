@@ -42,8 +42,7 @@ export default function WebContent({ lang }: Props) {
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
+            animate="visible"
             variants={staggerContainer}>
             {webProjects.map((project) => (
               <motion.div key={project.id} variants={cardVariant}>
