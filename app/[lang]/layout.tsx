@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
+import FloatingNav from '../components/FloatingNav';
 import HtmlLang from '../components/HtmlLang';
 
 const locales = ['en', 'fr', 'zh-CN'] as const;
@@ -20,6 +21,7 @@ export default async function LangLayout({
   return (
     <>
       <HtmlLang lang={lang} />
+      <FloatingNav lang={lang} />
       <div lang={lang} className="min-h-screen">
         {children}
       </div>

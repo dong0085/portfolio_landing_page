@@ -69,7 +69,7 @@ export default function ProjectsContent({ lang }: Props) {
   return (
     <SpotlightBackground
       shapes={projectsShapes}
-      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start py-20 md:py-28 overflow-x-hidden bg-slate-50">
+      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start pt-20 pb-[calc(8rem+env(safe-area-inset-bottom))] md:pt-28 md:pb-32 overflow-x-hidden bg-slate-50">
       <PageTransition className="max-w-5xl w-full px-6 md:px-12">
         <div className="mb-12 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">

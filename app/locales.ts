@@ -4,6 +4,33 @@ export const localeOptions = [
   { code: 'zh-CN', label: '中文' },
 ];
 
+export const navCopy = {
+  en: {
+    primaryNavigation: 'Primary navigation',
+    language: 'Language',
+    home: 'Home',
+    projects: 'Projects',
+    web: 'Web',
+    mobile: 'Mobile',
+  },
+  fr: {
+    primaryNavigation: 'Navigation principale',
+    language: 'Langue',
+    home: 'Accueil',
+    projects: 'Projets',
+    web: 'Web',
+    mobile: 'Mobile',
+  },
+  'zh-CN': {
+    primaryNavigation: '主导航',
+    language: '语言',
+    home: '首页',
+    projects: '项目',
+    web: '网页',
+    mobile: '移动端',
+  },
+};
+
 export const webCopy = {
   en: {
     pageTitle: 'Web Projects',

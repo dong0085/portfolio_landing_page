@@ -1,4 +1,3 @@
-import FloatingNav from '../../components/FloatingNav';
 import WebContent from './WebContent';
 
 export default async function WebPage({
@@ -9,11 +8,8 @@ export default async function WebPage({
   const { lang } = await params;
 
   return (
-    <>
-      <FloatingNav lang={lang} />
-      <main className="min-h-screen relative bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
-        <WebContent lang={lang} />
-      </main>
-    </>
+    <main className="min-h-screen relative bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
+      <WebContent lang={lang} />
+    </main>
   );
 }

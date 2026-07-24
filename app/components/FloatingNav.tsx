@@ -1,104 +1,134 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { FaHome, FaMobileAlt, FaDesktop } from 'react-icons/fa';
+import { usePathname, useRouter } from 'next/navigation';
+import { motion, useReducedMotion } from 'motion/react';
+import {
+  FaDesktop,
+  FaFolderOpen,
+  FaGlobe,
+  FaHome,
+  FaMobileAlt,
+} from 'react-icons/fa';
+import { localeOptions, navCopy } from '../locales';
 
-const SCROLL_DELTA = 30;
-const TOP_THRESHOLD = 50;
+interface FloatingNavProps {
+  lang: string;
+}
 
-export default function FloatingNav({ lang }: { lang: string }) {
+function getLocalizedPath(pathname: string, nextLang: string) {
+  const [, ...routeSegments] = pathname.split('/').filter(Boolean);
+  return `/${[nextLang, ...routeSegments].join('/')}`;
+}
+
+export default function FloatingNav({ lang }: FloatingNavProps) {
   const pathname = usePathname();
-  const [isVisible, setIsVisible] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY;
-
-    // Always show near top of page
-    if (currentScrollY < TOP_THRESHOLD) {
-      setIsVisible(true);
-      lastScrollY.current = currentScrollY;
-      return;
-    }
-
-    const delta = currentScrollY - lastScrollY.current;
-
-    // Ignore small movements (prevent jitter)
-    if (Math.abs(delta) < SCROLL_DELTA) return;
-
-    // Scroll UP → show nav (user wants to navigate)
-    // Scroll DOWN → hide nav (user is reading)
-    setIsVisible(delta < 0);
-    lastScrollY.current = currentScrollY;
-  }, []);
-
-  useEffect(() => {
-    if (!isMobile) return;
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile, handleScroll]);
+  const router = useRouter();
+  const shouldReduceMotion = useReducedMotion();
+  const copy = navCopy[lang as keyof typeof navCopy] ?? navCopy.en;
+  const normalizedPathname = pathname.replace(/\/+$/, '') || '/';
 
   const navItems = [
     {
       href: `/${lang}`,
-      icon: <FaHome size={20} />,
-      label: 'Home',
-      isActive: pathname === `/${lang}`,
+      icon: FaHome,
+      label: copy.home,
     },
     {
-      href: `/${lang}/mobile`,
-      icon: <FaMobileAlt size={20} />,
-      label: 'Mobile',
-      isActive: pathname === `/${lang}/mobile`,
+      href: `/${lang}/projects`,
+      icon: FaFolderOpen,
+      label: copy.projects,
     },
     {
       href: `/${lang}/web`,
-      icon: <FaDesktop size={20} />,
-      label: 'Web',
-      isActive: pathname === `/${lang}/web`,
+      icon: FaDesktop,
+      label: copy.web,
+    },
+    {
+      href: `/${lang}/mobile`,
+      icon: FaMobileAlt,
+      label: copy.mobile,
     },
   ];
 
-  const showNav = !isMobile || isVisible;
-
   return (
-    <AnimatePresence>
-      {showNav && (
-        <motion.nav
-          className="fixed bottom-6 md:bottom-12 left-1/2 z-50"
-          initial={{ x: '-50%', y: 80, opacity: 0 }}
-          animate={{ x: '-50%', y: 0, opacity: 1 }}
-          exit={{ x: '-50%', y: 80, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 25 }}>
-          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-md rounded-full px-6 py-3 shadow-2xl border border-slate-200 ring-1 ring-[#1E4D8F]/10">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-label={item.label}
-                className={`p-3 rounded-full transition-all duration-300 ${
-                  item.isActive
-                    ? 'bg-[#1E4D8F] text-white shadow-lg shadow-[#1E4D8F]/30 scale-110'
-                    : 'text-slate-600 hover:text-[#1E4D8F] hover:bg-slate-100 hover:scale-105'
-                }`}>
-                {item.icon}
-              </Link>
-            ))}
+    <motion.nav
+      aria-label={copy.primaryNavigation}
+      className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-1/2 z-50 max-w-[calc(100vw-1rem)] -translate-x-1/2 md:bottom-8"
+      initial={shouldReduceMotion ? false : { y: 24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : { type: 'spring', stiffness: 320, damping: 28 }
+      }>
+      <div className="flex items-center gap-1 rounded-2xl border border-white/80 bg-white/90 p-1.5 shadow-[0_12px_32px_rgba(15,23,42,0.16)] ring-1 ring-slate-900/5 backdrop-blur-xl md:rounded-full">
+        {navItems.map((item) => {
+          const isHome = item.href === `/${lang}`;
+          const isActive = isHome
+            ? normalizedPathname === item.href
+            : normalizedPathname === item.href ||
+              normalizedPathname.startsWith(`${item.href}/`);
+          const Icon = item.icon;
+
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isActive ? 'page' : undefined}
+              className={`relative isolate flex min-h-12 min-w-11 shrink-0 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[10px] font-semibold leading-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E4D8F] focus-visible:ring-offset-2 md:min-h-11 md:flex-row md:gap-2 md:rounded-full md:px-3 md:text-sm ${
+                isActive
+                  ? 'text-white'
+                  : 'text-slate-600 hover:bg-slate-100 hover:text-[#1E4D8F]'
+              }`}>
+              {isActive && (
+                <motion.span
+                  layoutId="floating-nav-active-pill"
+                  aria-hidden="true"
+                  className="absolute inset-0 -z-10 rounded-xl bg-[#1E4D8F] shadow-sm md:rounded-full"
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { type: 'spring', stiffness: 420, damping: 32 }
+                  }
+                />
+              )}
+              <Icon aria-hidden="true" className="size-[18px] shrink-0" />
+              <span className="whitespace-nowrap">{item.label}</span>
+            </Link>
+          );
+        })}
+
+        <div className="ml-0.5 flex min-h-12 shrink-0 items-center border-l border-slate-200 pl-1.5 md:min-h-11 md:pl-2">
+          <div className="relative flex items-center">
+            <FaGlobe
+              aria-hidden="true"
+              className="pointer-events-none absolute left-2 size-3.5 text-slate-500"
+            />
+            <select
+              value={lang}
+              aria-label={copy.language}
+              title={copy.language}
+              onChange={(event) => {
+                const nextLang = event.target.value;
+
+                if (nextLang !== lang) {
+                  const nextPath = getLocalizedPath(pathname, nextLang);
+                  router.push(
+                    `${nextPath}${window.location.search}${window.location.hash}`,
+                  );
+                }
+              }}
+              className="h-10 w-16 cursor-pointer rounded-xl border-0 bg-transparent py-0 pl-7 pr-1 text-xs font-bold text-slate-600 outline-none transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-[#1E4D8F] focus-visible:ring-offset-1 md:w-[4.5rem]">
+              {localeOptions.map((option) => (
+                <option key={option.code} value={option.code}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
-        </motion.nav>
-      )}
-    </AnimatePresence>
+        </div>
+      </div>
+    </motion.nav>
   );
 }

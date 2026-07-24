@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { homeCopy, localeOptions } from '../locales';
+import { homeCopy } from '../locales';
 import SpotlightBackground, {
   type ShapeDefinition,
 } from './SpotlightBackground';
@@ -59,7 +59,7 @@ export default function LayeredShapes({ lang }: Props) {
   return (
     <SpotlightBackground
       shapes={homeShapes}
-      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center py-12 md:py-20 overflow-x-hidden bg-slate-50"
+      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center pt-12 pb-[calc(8rem+env(safe-area-inset-bottom))] md:pt-20 md:pb-32 overflow-x-hidden bg-slate-50"
     >
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-5 gap-12 items-center px-6 md:px-12">
         {/* Profile Image Column */}
@@ -142,7 +142,7 @@ export default function LayeredShapes({ lang }: Props) {
             />
           </div>
 
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+          <div className="pt-8 flex items-center justify-center lg:justify-start">
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -155,25 +155,6 @@ export default function LayeredShapes({ lang }: Props) {
                 {copy.viewMyWork}
               </Link>
             </motion.div>
-
-            <div className="inline-flex rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm p-1.5 shadow-sm ring-1 ring-slate-900/5">
-              {localeOptions.map((option) => {
-                const isActive = lang === option.code;
-                return (
-                  <Link
-                    key={option.code}
-                    href={`/${option.code}`}
-                    className={`px-4 py-2 text-sm font-bold rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? 'bg-[#1E4D8F] text-white shadow-md'
-                        : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
-                    }`}
-                  >
-                    {option.label}
-                  </Link>
-                );
-              })}
-            </div>
           </div>
         </motion.div>
       </div>
