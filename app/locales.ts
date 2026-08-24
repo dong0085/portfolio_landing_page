@@ -120,7 +120,7 @@ export const homeCopy = {
     mobile: 'mobile',
     viewMyWork: 'View My Work',
     intro:
-      "I'm a student at Algonquin College passionate about crafting clean user experiences. When I'm not coding, I'm exploring the city through the lens of my camera.",
+      "I'm a mobile developer who is passionate about creating clean and fun interfaces. When I'm not coding, I'm exploring the city through the lens of my camera.",
   },
   fr: {
     greeting: 'Bonjour, je suis Eric',
@@ -129,7 +129,7 @@ export const homeCopy = {
     mobile: 'mobile',
     viewMyWork: 'Voir mon travail',
     intro:
-      "Je suis etudiant au College Algonquin, passionne par la creation d'experiences utilisateur soignees. Quand je ne code pas, j'explore la ville a travers l'objectif de mon appareil photo.",
+      "Je suis développeur mobile et passionné par la création d'interfaces épurées et ludiques. Quand je ne code pas, j'explore la ville à travers l'objectif de mon appareil photo.",
   },
   'zh-CN': {
     greeting: '你好，我是Eric',
@@ -138,6 +138,6 @@ export const homeCopy = {
     mobile: '移动端',
     viewMyWork: '查看我的作品',
     intro:
-      '我是亚岗昆学院的学生，热爱打造简洁的用户体验。当我不写代码时，我会通过相机的镜头去探索我所在的城市。',
+      '我是一名移动开发者，热衷于打造简洁有趣的界面。当我不写代码时，我会透过相机镜头探索这座城市。',
   },
 };
