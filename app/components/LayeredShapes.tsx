@@ -14,7 +14,13 @@ import { homeCopy } from '../locales';
 import SpotlightBackground, {
   type ShapeDefinition,
 } from './SpotlightBackground';
-import { FaLinkedin, FaInstagram, FaGithub, FaEnvelope } from 'react-icons/fa6';
+import {
+  FaLinkedin,
+  FaInstagram,
+  FaGithub,
+  FaBlog,
+  FaEnvelope,
+} from 'react-icons/fa6';
 
 interface Props {
   lang: string;
@@ -207,6 +213,11 @@ export default function LayeredShapes({ lang }: Props) {
               href="https://github.com/dong0085"
               icon={<FaGithub size={28} />}
               label="GitHub"
+            />
+            <SocialLink
+              href="https://dong0085.github.io"
+              icon={<FaBlog size={28} />}
+              label="Blog"
             />
             <SocialLink
               href="mailto:eric.cheng.dong@gmail.com"
