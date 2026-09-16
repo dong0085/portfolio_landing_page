@@ -31,38 +31,38 @@ const homeShapes: ShapeDefinition[] = [
     position: 'top-[5%] right-[5%]',
     size: 'w-64 h-64 md:w-96 md:h-96',
     borderRadius: 'rounded-[40%_60%_70%_30%/60%_30%_70%_40%]',
-    baseColor: 'bg-[#1E4D8F]/5',
-    spotlightColor: 'bg-[#F58A07]/40',
+    baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
+    spotlightColor: 'bg-[#F58A07]/40 dark:bg-[#F58A07]/25',
     animation: 'animate-float-slow',
-    extraClasses: 'shadow-lg',
+    extraClasses: 'shadow-lg dark:shadow-none',
   },
   {
     position: 'top-[60%] left-[5%]',
     size: 'w-56 h-56 md:w-80 md:h-80',
     borderRadius: '',
-    baseColor: 'bg-[#1E4D8F]/5',
-    spotlightColor: 'bg-[#E16036]/40',
+    baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
+    spotlightColor: 'bg-[#E16036]/40 dark:bg-[#E16036]/25',
     animation: 'animate-float-slow',
-    extraClasses: 'rotate-45 shadow-lg [animation-delay:1s]',
+    extraClasses: 'rotate-45 shadow-lg dark:shadow-none [animation-delay:1s]',
   },
   {
     position: 'top-[25%] left-[15%]',
     size: 'w-64 h-64',
     borderRadius: 'rounded-full',
-    baseColor: 'bg-[#1E4D8F]/8',
-    spotlightColor: 'bg-[#B6C649]/40',
+    baseColor: 'bg-[#1E4D8F]/8 dark:bg-[#8AB6EC]/15',
+    spotlightColor: 'bg-[#B6C649]/40 dark:bg-[#B6C649]/25',
     animation: 'animate-float-medium',
-    extraClasses: 'shadow-xl',
+    extraClasses: 'shadow-xl dark:shadow-none',
     desktopOnly: true,
   },
   {
     position: 'bottom-[5%] right-[10%]',
     size: 'w-48 h-48 md:w-72 md:h-72',
     borderRadius: 'rounded-[30%_70%_70%_30%/30%_30%_70%_70%]',
-    baseColor: 'bg-[#1E4D8F]/8',
-    spotlightColor: 'bg-[#E9FAE3]',
+    baseColor: 'bg-[#1E4D8F]/8 dark:bg-[#8AB6EC]/15',
+    spotlightColor: 'bg-[#E9FAE3] dark:bg-[#E9FAE3]/20',
     animation: 'animate-float-medium',
-    extraClasses: 'shadow-xl [animation-delay:2s]',
+    extraClasses: 'shadow-xl dark:shadow-none [animation-delay:2s]',
   },
 ];
 
@@ -107,7 +107,7 @@ export default function LayeredShapes({ lang }: Props) {
   return (
     <SpotlightBackground
       shapes={homeShapes}
-      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center pt-12 pb-[calc(8rem+env(safe-area-inset-bottom))] md:pt-20 md:pb-32 overflow-x-hidden bg-slate-50"
+      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center pt-12 pb-[calc(8rem+env(safe-area-inset-bottom))] md:pt-20 md:pb-32 overflow-x-hidden bg-surface"
     >
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-5 gap-12 items-center px-6 md:px-12">
         {/* Profile Image Column */}
@@ -129,7 +129,7 @@ export default function LayeredShapes({ lang }: Props) {
               style={
                 shouldReduceMotion ? undefined : { x: plateX, y: plateY }
               }>
-              <div className="absolute inset-0 bg-[#1E4D8F] rounded-3xl transform -rotate-6 scale-105 transition-transform group-hover:rotate-0 opacity-10 lg:opacity-100" />
+              <div className="absolute inset-0 bg-brand-solid rounded-3xl transform -rotate-6 scale-105 transition-transform group-hover:rotate-0 opacity-10 lg:opacity-100" />
             </motion.div>
             <motion.div
               aria-hidden="true"
@@ -137,7 +137,7 @@ export default function LayeredShapes({ lang }: Props) {
               style={
                 shouldReduceMotion ? undefined : { x: borderX, y: borderY }
               }>
-              <div className="absolute inset-0 border-2 border-[#1E4D8F] rounded-3xl transform rotate-3 scale-105" />
+              <div className="absolute inset-0 border-2 border-brand rounded-3xl transform rotate-3 scale-105" />
             </motion.div>
             <motion.div
               className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl"
@@ -172,21 +172,21 @@ export default function LayeredShapes({ lang }: Props) {
           transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
         >
           <div className="space-y-4">
-            <h2 className="text-[#1E4D8F] font-semibold tracking-[0.2em] uppercase text-xs sm:text-sm">
+            <h2 className="text-brand font-semibold tracking-[0.2em] uppercase text-xs sm:text-sm">
               {copy.greeting}
             </h2>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-content leading-[1.1]">
               {copy.headlinePrefix}{' '}
               <Link
                 href={`/${lang}/web`}
-                className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#1E4D8F]/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200"
+                className="inline-block text-brand underline decoration-wavy decoration-brand/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200"
               >
                 {copy.web}
               </Link>{' '}
               &{' '}
               <Link
                 href={`/${lang}/mobile`}
-                className="inline-block text-[#1E4D8F] underline decoration-wavy decoration-[#1E4D8F]/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200"
+                className="inline-block text-brand underline decoration-wavy decoration-brand/30 underline-offset-8 decoration-2 hover:scale-105 transition-transform duration-200"
               >
                 {copy.mobile}
               </Link>
@@ -194,7 +194,7 @@ export default function LayeredShapes({ lang }: Props) {
             </h1>
           </div>
 
-          <p className="text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+          <p className="text-muted text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
             {copy.intro}
           </p>
 
@@ -234,7 +234,7 @@ export default function LayeredShapes({ lang }: Props) {
             >
               <Link
                 href={`/${lang}/projects`}
-                className="block w-full sm:w-auto text-center px-8 py-4 bg-[#1E4D8F] text-white font-bold rounded-xl hover:bg-[#163B6E] transition-colors shadow-xl shadow-[#1E4D8F]/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E4D8F] focus-visible:ring-offset-2"
+                className="block w-full sm:w-auto text-center px-8 py-4 bg-brand-solid text-white font-bold rounded-xl hover:bg-brand-solid-hover transition-colors shadow-xl shadow-brand-solid/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 dark:ring-offset-surface"
               >
                 {copy.viewMyWork}
               </Link>
@@ -260,7 +260,7 @@ function SocialLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-2 text-slate-400 hover:text-[#1E4D8F] hover:bg-[#1E4D8F]/5 rounded-full transition-all duration-300"
+      className="p-2 text-subtle hover:text-brand hover:bg-brand/5 rounded-full transition-all duration-300"
       aria-label={label}
     >
       {icon}

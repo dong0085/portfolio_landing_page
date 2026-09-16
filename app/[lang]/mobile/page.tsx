@@ -8,7 +8,7 @@ export default async function MobilePage({
   const { lang } = await params;
 
   return (
-    <main className="min-h-screen relative bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
+    <main className="min-h-screen relative bg-gradient-to-br from-surface to-surface-2 overflow-hidden">
       <MobileContent lang={lang} />
     </main>
   );

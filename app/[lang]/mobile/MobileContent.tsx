@@ -28,13 +28,13 @@ export default function MobileContent({ lang }: Props) {
   return (
     <SpotlightBackground
       shapes={mobileShapes}
-      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start pt-20 pb-[calc(8rem+env(safe-area-inset-bottom))] md:pt-28 md:pb-32 overflow-x-hidden bg-slate-50">
+      containerClassName="relative min-h-screen w-full flex flex-col items-center justify-start pt-20 pb-[calc(8rem+env(safe-area-inset-bottom))] md:pt-28 md:pb-32 overflow-x-hidden bg-surface">
       <PageTransition className="max-w-5xl w-full px-6 md:px-12">
         <div className="mb-12 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-content mb-4">
             {copy.pageTitle}
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
+          <p className="text-muted text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
             {copy.pageSubtitle}
           </p>
         </div>

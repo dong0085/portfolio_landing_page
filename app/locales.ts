@@ -8,6 +8,8 @@ export const navCopy = {
   en: {
     primaryNavigation: 'Primary navigation',
     language: 'Language',
+    switchToLight: 'Switch to light theme',
+    switchToDark: 'Switch to dark theme',
     home: 'Home',
     projects: 'Projects',
     web: 'Web',
@@ -16,6 +18,8 @@ export const navCopy = {
   fr: {
     primaryNavigation: 'Navigation principale',
     language: 'Langue',
+    switchToLight: 'Passer au thème clair',
+    switchToDark: 'Passer au thème sombre',
     home: 'Accueil',
     projects: 'Projets',
     web: 'Web',
@@ -24,6 +28,8 @@ export const navCopy = {
   'zh-CN': {
     primaryNavigation: '主导航',
     language: '语言',
+    switchToLight: '切换到浅色主题',
+    switchToDark: '切换到深色主题',
     home: '首页',
     projects: '项目',
     web: '网页',

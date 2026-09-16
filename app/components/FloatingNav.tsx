@@ -11,6 +11,7 @@ import {
   FaMobileAlt,
 } from 'react-icons/fa';
 import { localeOptions, navCopy } from '../locales';
+import ThemeToggle from './ThemeToggle';
 
 interface FloatingNavProps {
   lang: string;
@@ -62,7 +63,7 @@ export default function FloatingNav({ lang }: FloatingNavProps) {
           ? { duration: 0 }
           : { type: 'spring', stiffness: 320, damping: 28 }
       }>
-      <div className="flex items-center gap-1 rounded-2xl border border-white/80 bg-white/90 p-1.5 shadow-[0_12px_32px_rgba(15,23,42,0.16)] ring-1 ring-slate-900/5 backdrop-blur-xl md:rounded-full">
+      <div className="flex items-center gap-1 rounded-2xl border border-white/80 bg-white/90 p-1.5 shadow-[0_12px_32px_rgba(15,23,42,0.16)] ring-1 ring-slate-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/85 dark:shadow-[0_12px_32px_rgba(0,0,0,0.5)] dark:ring-white/10 md:rounded-full">
         {navItems.map((item) => {
           const isHome = item.href === `/${lang}`;
           const isActive = isHome
@@ -76,16 +77,16 @@ export default function FloatingNav({ lang }: FloatingNavProps) {
               key={item.href}
               href={item.href}
               aria-current={isActive ? 'page' : undefined}
-              className={`relative isolate flex min-h-12 min-w-11 shrink-0 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[10px] font-semibold leading-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E4D8F] focus-visible:ring-offset-2 md:min-h-11 md:flex-row md:gap-2 md:rounded-full md:px-3 md:text-sm ${
+              className={`relative isolate flex min-h-12 min-w-11 shrink-0 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[10px] font-semibold leading-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 dark:ring-offset-surface md:min-h-11 md:flex-row md:gap-2 md:rounded-full md:px-3 md:text-sm ${
                 isActive
                   ? 'text-white'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-[#1E4D8F]'
+                  : 'text-muted hover:bg-chip hover:text-brand'
               }`}>
               {isActive && (
                 <motion.span
                   layoutId="floating-nav-active-pill"
                   aria-hidden="true"
-                  className="absolute inset-0 -z-10 rounded-xl bg-[#1E4D8F] shadow-sm md:rounded-full"
+                  className="absolute inset-0 -z-10 rounded-xl bg-brand-solid shadow-sm md:rounded-full"
                   transition={
                     shouldReduceMotion
                       ? { duration: 0 }
@@ -99,11 +100,11 @@ export default function FloatingNav({ lang }: FloatingNavProps) {
           );
         })}
 
-        <div className="ml-0.5 flex min-h-12 shrink-0 items-center border-l border-slate-200 pl-1.5 md:min-h-11 md:pl-2">
+        <div className="ml-0.5 flex min-h-12 shrink-0 items-center gap-0.5 border-l border-card-border pl-1.5 md:min-h-11 md:pl-2">
           <div className="relative flex items-center">
             <FaGlobe
               aria-hidden="true"
-              className="pointer-events-none absolute left-2 size-3.5 text-slate-500"
+              className="pointer-events-none absolute left-2 size-3.5 text-slate-500 dark:text-slate-400"
             />
             <select
               value={lang}
@@ -119,7 +120,7 @@ export default function FloatingNav({ lang }: FloatingNavProps) {
                   );
                 }
               }}
-              className="h-10 w-16 cursor-pointer rounded-xl border-0 bg-transparent py-0 pl-7 pr-1 text-xs font-bold text-slate-600 outline-none transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-[#1E4D8F] focus-visible:ring-offset-1 md:w-[4.5rem]">
+              className="h-10 w-16 cursor-pointer rounded-xl border-0 bg-transparent py-0 pl-7 pr-1 text-xs font-bold text-muted outline-none transition-colors hover:bg-chip hover:text-content focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1 dark:ring-offset-surface md:w-[4.5rem]">
               {localeOptions.map((option) => (
                 <option key={option.code} value={option.code}>
                   {option.label}
@@ -127,6 +128,10 @@ export default function FloatingNav({ lang }: FloatingNavProps) {
               ))}
             </select>
           </div>
+          <ThemeToggle
+            switchToLight={copy.switchToLight}
+            switchToDark={copy.switchToDark}
+          />
         </div>
       </div>
     </motion.nav>
