@@ -48,4 +48,21 @@ export const webProjects: Project[] = [
       'Framer Motion',
     ],
   },
+  {
+    id: 'ten-minutes-review',
+    title: {
+      en: 'Ten Minutes Review',
+      fr: 'Révision en dix minutes',
+      'zh-CN': '十分钟复习',
+    },
+    description: {
+      en: 'Turns tutoring notes — typed or photographed — into a fresh daily quiz that fits inside ten minutes, with answers kept server-side until you submit.',
+      fr: `Transforme les notes de cours — saisies ou photographiées — en un quiz quotidien de dix minutes, avec les réponses conservées côté serveur jusqu'à la soumission.`,
+      'zh-CN':
+        '把辅导笔记——打字或拍照——变成每天十分钟的新鲜小测验，答案在提交前始终保留在服务器端。',
+    },
+    thumbnailSrc: '/Images/ten_minutes_review.png',
+    demoUrl: 'https://ten-minutes-review.vercel.app',
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Postgres', 'Drizzle ORM'],
+  },
 ];
