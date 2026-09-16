@@ -81,11 +81,11 @@ export default function ProjectsContent({ lang }: Props) {
         </div>
 
         {/* Web Projects Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
-            {copy.webSection}
-          </h2>
-          {webProjects.length > 0 ? (
+        {webProjects.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
+              {copy.webSection}
+            </h2>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
               initial="hidden"
@@ -104,24 +104,15 @@ export default function ProjectsContent({ lang }: Props) {
                 </motion.div>
               ))}
             </motion.div>
-          ) : (
-            <div className="text-center py-12">
-              <motion.p
-                className="text-slate-400 text-lg font-light italic"
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
-                {copy.emptyWeb}
-              </motion.p>
-            </div>
-          )}
-        </section>
+          </section>
+        )}
 
         {/* Mobile Projects Section */}
-        <section>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
-            {copy.mobileSection}
-          </h2>
-          {mobileProjects.length > 0 ? (
+        {mobileProjects.length > 0 && (
+          <section>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
+              {copy.mobileSection}
+            </h2>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
               initial="hidden"
@@ -140,17 +131,8 @@ export default function ProjectsContent({ lang }: Props) {
                 </motion.div>
               ))}
             </motion.div>
-          ) : (
-            <div className="text-center py-12">
-              <motion.p
-                className="text-slate-400 text-lg font-light italic"
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
-                {copy.emptyMobile}
-              </motion.p>
-            </div>
-          )}
-        </section>
+          </section>
+        )}
       </PageTransition>
     </SpotlightBackground>
   );

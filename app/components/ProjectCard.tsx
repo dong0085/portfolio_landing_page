@@ -16,7 +16,7 @@ export default function ProjectCard({ project, lang, labels }: Props) {
 
   return (
     <motion.div
-      className="group bg-white border border-slate-200 hover:border-[#1E4D8F]/30 rounded-xl shadow-sm hover:shadow-md transition-[border-color,box-shadow] duration-300 overflow-hidden flex flex-col h-full"
+      className="group relative bg-white border border-slate-200 hover:border-[#1E4D8F]/30 rounded-xl shadow-sm hover:shadow-md transition-[border-color,box-shadow] duration-300 overflow-hidden flex flex-col h-full has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[#1E4D8F] has-[:focus-visible]:ring-offset-2"
       whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
       <div className="relative aspect-video bg-slate-100">
@@ -34,7 +34,9 @@ export default function ProjectCard({ project, lang, labels }: Props) {
       </div>
 
       <div className="p-5 flex flex-col flex-1 gap-3">
-        <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+        <h3 className="text-lg font-bold text-slate-900 transition-colors duration-300 group-hover:text-[#1E4D8F]">
+          {title}
+        </h3>
 
         <p className="text-slate-600 text-sm leading-relaxed flex-1">
           {description}
@@ -60,7 +62,7 @@ export default function ProjectCard({ project, lang, labels }: Props) {
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 mt-1 text-sm font-semibold text-[#1E4D8F] hover:underline">
+            className="inline-flex items-center gap-1.5 mt-1 text-sm font-semibold text-[#1E4D8F] hover:underline after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none">
             {labels.viewDemo}
             <span
               aria-hidden="true"

@@ -234,7 +234,7 @@ export default function LayeredShapes({ lang }: Props) {
             >
               <Link
                 href={`/${lang}/projects`}
-                className="block w-full sm:w-auto text-center px-8 py-4 bg-[#1E4D8F] text-white font-bold rounded-xl hover:bg-[#163B6E] transition-colors shadow-xl shadow-[#1E4D8F]/25"
+                className="block w-full sm:w-auto text-center px-8 py-4 bg-[#1E4D8F] text-white font-bold rounded-xl hover:bg-[#163B6E] transition-colors shadow-xl shadow-[#1E4D8F]/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E4D8F] focus-visible:ring-offset-2"
               >
                 {copy.viewMyWork}
               </Link>

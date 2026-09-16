@@ -37,21 +37,21 @@ export const webCopy = {
     pageSubtitle: 'A selection of web applications and sites I have built.',
     viewDemo: 'View Demo',
     techStack: 'Tech Stack',
-    empty: 'Waiting for Eric to upload his Web Projects',
+    empty: 'New web projects are in the works. Check back soon.',
   },
   fr: {
     pageTitle: 'Projets Web',
     pageSubtitle: "Une sélection d'applications et de sites web que j'ai réalisés.",
     viewDemo: 'Voir la démo',
     techStack: 'Technologies',
-    empty: 'En attente des projets Web d\'Eric',
+    empty: 'De nouveaux projets web arrivent bientôt.',
   },
   'zh-CN': {
     pageTitle: '网页项目',
     pageSubtitle: '我构建的部分网页应用和网站。',
     viewDemo: '查看演示',
     techStack: '技术栈',
-    empty: '等待 Eric 上传他的网页项目',
+    empty: '新的网页项目正在制作中，敬请期待。',
   },
 };
 
@@ -61,21 +61,21 @@ export const mobileCopy = {
     pageSubtitle: 'A selection of mobile applications I have built.',
     viewDemo: 'View Demo',
     techStack: 'Tech Stack',
-    empty: 'Waiting for Eric to upload his Mobile Projects',
+    empty: 'New mobile projects are in the works. Check back soon.',
   },
   fr: {
     pageTitle: 'Projets Mobile',
     pageSubtitle: "Une sélection d'applications mobiles que j'ai réalisées.",
     viewDemo: 'Voir la démo',
     techStack: 'Technologies',
-    empty: 'En attente des projets Mobile d\'Eric',
+    empty: 'De nouveaux projets mobile arrivent bientôt.',
   },
   'zh-CN': {
     pageTitle: '移动端项目',
     pageSubtitle: '我构建的部分移动端应用。',
     viewDemo: '查看演示',
     techStack: '技术栈',
-    empty: '等待 Eric 上传他的移动端项目',
+    empty: '新的移动端项目正在制作中，敬请期待。',
   },
 };
 
@@ -87,8 +87,6 @@ export const projectsCopy = {
     techStack: 'Tech Stack',
     webSection: 'Web Projects',
     mobileSection: 'Mobile Projects',
-    emptyWeb: 'Waiting for Eric to upload his Web Projects',
-    emptyMobile: 'Waiting for Eric to upload his Mobile Projects',
   },
   fr: {
     pageTitle: 'Tous les projets',
@@ -97,8 +95,6 @@ export const projectsCopy = {
     techStack: 'Technologies',
     webSection: 'Projets Web',
     mobileSection: 'Projets Mobile',
-    emptyWeb: 'En attente des projets Web d\'Eric',
-    emptyMobile: 'En attente des projets Mobile d\'Eric',
   },
   'zh-CN': {
     pageTitle: '所有项目',
@@ -107,8 +103,6 @@ export const projectsCopy = {
     techStack: '技术栈',
     webSection: '网页项目',
     mobileSection: '移动端项目',
-    emptyWeb: '等待 Eric 上传他的网页项目',
-    emptyMobile: '等待 Eric 上传他的移动端项目',
   },
 };
 
