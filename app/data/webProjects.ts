@@ -63,6 +63,6 @@ export const webProjects: Project[] = [
     },
     thumbnailSrc: '/Images/ten_minutes_review.png',
     demoUrl: 'https://ten-minutes-review.vercel.app',
-    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Postgres', 'Drizzle ORM'],
+    tags: ['Next.js 16', 'React 19', 'Postgres', 'Drizzle ORM', 'LLM Pipeline'],
   },
 ];
