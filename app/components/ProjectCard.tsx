@@ -13,7 +13,6 @@ interface Props {
 export default function ProjectCard({ project, lang, labels }: Props) {
   const title = project.title[lang] ?? project.title.en;
   const description = project.description[lang] ?? project.description.en;
-  const demoTooltip = project.demoTooltip?.[lang] ?? project.demoTooltip?.en;
 
   return (
     <motion.div
@@ -64,20 +63,11 @@ export default function ProjectCard({ project, lang, labels }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 mt-1 text-sm font-semibold text-brand hover:underline after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none">
-            <span className="group/demo relative inline-flex items-center gap-1.5">
-              {labels.viewDemo}
-              <span
-                aria-hidden="true"
-                className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                &rarr;
-              </span>
-              {demoTooltip && (
-                <span
-                  role="tooltip"
-                  className="pointer-events-none absolute bottom-full left-0 z-10 mb-2 w-max whitespace-nowrap rounded-md bg-content px-2.5 py-1.5 text-xs font-medium text-card opacity-0 shadow-md transition-opacity duration-200 group-hover/demo:opacity-100 [a:focus-visible_&]:opacity-100">
-                  {demoTooltip}
-                </span>
-              )}
+            {labels.viewDemo}
+            <span
+              aria-hidden="true"
+              className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+              &rarr;
             </span>
           </a>
         )}
