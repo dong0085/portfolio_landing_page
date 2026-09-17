@@ -4,6 +4,7 @@ export interface Project {
   description: Record<string, string>;
   thumbnailSrc: string;
   demoUrl?: string;
+  demoTooltip?: Record<string, string>;
   tags: string[];
 }
 
@@ -63,6 +64,11 @@ export const webProjects: Project[] = [
     },
     thumbnailSrc: '/Images/ten_minutes_review.png',
     demoUrl: 'https://ten-minutes-review.vercel.app',
+    demoTooltip: {
+      en: 'invite code: dev-invite',
+      fr: `code d'invitation : dev-invite`,
+      'zh-CN': '邀请码：dev-invite',
+    },
     tags: ['Next.js 16', 'React 19', 'Postgres', 'Drizzle ORM', 'LLM Pipeline'],
   },
 ];
