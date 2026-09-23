@@ -60,6 +60,16 @@ const homeShapes: ShapeDefinition[] = [
     spotlightColor: 'bg-[#E9FAE3] dark:bg-[#E9FAE3]/20',
     extraClasses: 'shadow-xl dark:shadow-none',
   },
+  {
+    position: 'top-[8%] left-[35%]',
+    size: 'w-60 h-30 md:w-96 md:h-48',
+    borderRadius: '',
+    baseColor: 'bg-[#1E4D8F]/10 dark:bg-[#8AB6EC]/20',
+    spotlightColor:
+      'bg-linear-to-r from-[#F58A07]/50 to-[#E16036]/50 dark:from-[#F58A07]/30 dark:to-[#E16036]/30',
+    extraClasses:
+      '[mask-image:url(/shapes/infinity.svg)] [mask-size:100%_100%] [mask-repeat:no-repeat]',
+  },
 ];
 
 export default function LayeredShapes({ lang }: Props) {
