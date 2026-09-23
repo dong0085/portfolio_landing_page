@@ -33,7 +33,6 @@ const homeShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-[40%_60%_70%_30%/60%_30%_70%_40%]',
     baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
     spotlightColor: 'bg-[#F58A07]/40 dark:bg-[#F58A07]/25',
-    animation: 'animate-float-slow',
     extraClasses: 'shadow-lg dark:shadow-none',
   },
   {
@@ -42,8 +41,7 @@ const homeShapes: ShapeDefinition[] = [
     borderRadius: '',
     baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
     spotlightColor: 'bg-[#E16036]/40 dark:bg-[#E16036]/25',
-    animation: 'animate-float-slow',
-    extraClasses: 'rotate-45 shadow-lg dark:shadow-none [animation-delay:1s]',
+    extraClasses: 'rotate-45 shadow-lg dark:shadow-none',
   },
   {
     position: 'top-[25%] left-[15%]',
@@ -51,7 +49,6 @@ const homeShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-full',
     baseColor: 'bg-[#1E4D8F]/8 dark:bg-[#8AB6EC]/15',
     spotlightColor: 'bg-[#B6C649]/40 dark:bg-[#B6C649]/25',
-    animation: 'animate-float-medium',
     extraClasses: 'shadow-xl dark:shadow-none',
     desktopOnly: true,
   },
@@ -61,8 +58,7 @@ const homeShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-[30%_70%_70%_30%/30%_30%_70%_70%]',
     baseColor: 'bg-[#1E4D8F]/8 dark:bg-[#8AB6EC]/15',
     spotlightColor: 'bg-[#E9FAE3] dark:bg-[#E9FAE3]/20',
-    animation: 'animate-float-medium',
-    extraClasses: 'shadow-xl dark:shadow-none [animation-delay:2s]',
+    extraClasses: 'shadow-xl dark:shadow-none',
   },
 ];
 

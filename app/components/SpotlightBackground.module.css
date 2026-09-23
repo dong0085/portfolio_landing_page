@@ -22,3 +22,18 @@
     );
   }
 }
+
+.reveal {
+  opacity: 0;
+  --reveal: 0%;
+  mask-image: radial-gradient(
+    circle farthest-corner at var(--rx, 50%) var(--ry, 50%),
+    black calc(var(--reveal) - 30%),
+    transparent var(--reveal)
+  );
+  -webkit-mask-image: radial-gradient(
+    circle farthest-corner at var(--rx, 50%) var(--ry, 50%),
+    black calc(var(--reveal) - 30%),
+    transparent var(--reveal)
+  );
+}

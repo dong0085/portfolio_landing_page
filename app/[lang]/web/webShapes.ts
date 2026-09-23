@@ -7,7 +7,6 @@ export const webShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-xl',
     baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
     spotlightColor: 'bg-[#0891B2]/15 dark:bg-[#0891B2]/25',
-    animation: 'animate-drift-slow',
     extraClasses: 'shadow-lg dark:shadow-none',
   },
   {
@@ -16,8 +15,7 @@ export const webShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-lg',
     baseColor: 'bg-[#1E4D8F]/6 dark:bg-[#8AB6EC]/12',
     spotlightColor: 'bg-[#06B6D4]/12 dark:bg-[#06B6D4]/22',
-    animation: 'animate-drift-medium',
-    extraClasses: 'shadow-lg dark:shadow-none [animation-delay:1s]',
+    extraClasses: 'shadow-lg dark:shadow-none',
   },
   {
     position: 'top-[20%] left-[10%]',
@@ -25,8 +23,7 @@ export const webShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-xl',
     baseColor: 'bg-[#1E4D8F]/8 dark:bg-[#8AB6EC]/15',
     spotlightColor: 'bg-[#14B8A6]/12 dark:bg-[#14B8A6]/22',
-    animation: 'animate-drift-slow',
-    extraClasses: 'shadow-xl dark:shadow-none [animation-delay:3s]',
+    extraClasses: 'shadow-xl dark:shadow-none',
     desktopOnly: true,
   },
   {
@@ -35,8 +32,7 @@ export const webShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-md',
     baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
     spotlightColor: 'bg-[#2DD4BF]/10 dark:bg-[#2DD4BF]/20',
-    animation: 'animate-drift-medium',
-    extraClasses: 'shadow-xl dark:shadow-none [animation-delay:2s]',
+    extraClasses: 'shadow-xl dark:shadow-none',
   },
   {
     position: 'top-[40%] right-[20%]',
@@ -44,8 +40,7 @@ export const webShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-lg',
     baseColor: 'bg-[#1E4D8F]/6 dark:bg-[#8AB6EC]/12',
     spotlightColor: 'bg-[#0891B2]/10 dark:bg-[#0891B2]/20',
-    animation: 'animate-drift-slow',
-    extraClasses: 'shadow-md dark:shadow-none [animation-delay:4s]',
+    extraClasses: 'shadow-md dark:shadow-none',
     desktopOnly: true,
   },
 ];

@@ -16,6 +16,7 @@ export default function ProjectCard({ project, lang, labels }: Props) {
 
   return (
     <motion.div
+      data-shape-drag="off"
       className="group relative bg-card border border-card-border hover:border-brand/30 rounded-xl shadow-sm hover:shadow-md dark:shadow-black/30 transition-[border-color,box-shadow] duration-300 overflow-hidden flex flex-col h-full has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-surface"
       whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}>

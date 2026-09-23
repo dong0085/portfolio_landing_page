@@ -7,7 +7,6 @@ export const mobileShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-2xl',
     baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
     spotlightColor: 'bg-[#7C3AED]/15 dark:bg-[#7C3AED]/25',
-    animation: 'animate-sway-slow',
     extraClasses: 'shadow-lg dark:shadow-none',
   },
   {
@@ -16,8 +15,7 @@ export const mobileShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-3xl',
     baseColor: 'bg-[#1E4D8F]/6 dark:bg-[#8AB6EC]/12',
     spotlightColor: 'bg-[#8B5CF6]/12 dark:bg-[#8B5CF6]/22',
-    animation: 'animate-sway-medium',
-    extraClasses: 'shadow-lg dark:shadow-none [animation-delay:1s]',
+    extraClasses: 'shadow-lg dark:shadow-none',
   },
   {
     position: 'top-[18%] left-[12%]',
@@ -25,8 +23,7 @@ export const mobileShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-2xl',
     baseColor: 'bg-[#1E4D8F]/8 dark:bg-[#8AB6EC]/15',
     spotlightColor: 'bg-[#A78BFA]/12 dark:bg-[#A78BFA]/22',
-    animation: 'animate-sway-slow',
-    extraClasses: 'shadow-xl dark:shadow-none [animation-delay:3s]',
+    extraClasses: 'shadow-xl dark:shadow-none',
     desktopOnly: true,
   },
   {
@@ -35,8 +32,7 @@ export const mobileShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-3xl',
     baseColor: 'bg-[#1E4D8F]/5 dark:bg-[#8AB6EC]/10',
     spotlightColor: 'bg-[#C4B5FD]/10 dark:bg-[#C4B5FD]/20',
-    animation: 'animate-sway-medium',
-    extraClasses: 'shadow-xl dark:shadow-none [animation-delay:2s]',
+    extraClasses: 'shadow-xl dark:shadow-none',
   },
   {
     position: 'top-[38%] right-[22%]',
@@ -44,8 +40,7 @@ export const mobileShapes: ShapeDefinition[] = [
     borderRadius: 'rounded-2xl',
     baseColor: 'bg-[#1E4D8F]/6 dark:bg-[#8AB6EC]/12',
     spotlightColor: 'bg-[#7C3AED]/10 dark:bg-[#7C3AED]/20',
-    animation: 'animate-sway-slow',
-    extraClasses: 'shadow-md dark:shadow-none [animation-delay:4s]',
+    extraClasses: 'shadow-md dark:shadow-none',
     desktopOnly: true,
   },
 ];
