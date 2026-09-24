@@ -62,7 +62,7 @@ export const webProjects: Project[] = [
         '把辅导笔记——打字或拍照——变成每天十分钟的新鲜小测验，答案在提交前始终保留在服务器端。邀请码：dev-invite。',
     },
     thumbnailSrc: '/Images/ten_minutes_review.png',
-    demoUrl: 'https://ten-minutes-review.vercel.app',
+    demoUrl: 'https://tenminutesreview.study',
     tags: ['Next.js 16', 'React 19', 'Postgres', 'Drizzle ORM', 'LLM Pipeline'],
   },
 ];
