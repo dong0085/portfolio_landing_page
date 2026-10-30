@@ -65,4 +65,29 @@ export const webProjects: Project[] = [
     demoUrl: 'https://tenminutesreview.study',
     tags: ['Next.js 16', 'React 19', 'Postgres', 'Drizzle ORM', 'LLM Pipeline'],
   },
+  {
+    id: 'dawn-radio',
+    title: {
+      en: 'Dawn Radio',
+      fr: 'Dawn Radio',
+      'zh-CN': 'Dawn Radio',
+    },
+    description: {
+      en: 'A live radio drama for language learners. Tune in to a walkie-talkie channel where characters handle an emergency in French, written live by Claude and voiced by ElevenLabs. Hold the talk key to join in and the story changes.',
+      fr: `Un feuilleton radio en direct pour apprendre une langue. Branchez-vous sur un canal de talkie-walkie où des personnages gèrent une urgence en français, écrite en direct par Claude et doublée par ElevenLabs. Maintenez la touche pour parler et l'histoire change.`,
+      'zh-CN':
+        '为语言学习者打造的实时广播剧。收听对讲机频道，角色们用法语处理一场紧急事件——剧情由 Claude 实时撰写，ElevenLabs 配音。按住通话键加入对话，故事随之改变。',
+    },
+    thumbnailSrc: '/Images/dawn_radio.jpg',
+    demoUrl: 'https://dawn-radio.pages.dev',
+    tags: [
+      'React 19',
+      'TypeScript',
+      'Vite',
+      'Cloudflare Pages',
+      'Claude API',
+      'ElevenLabs',
+      'Web Audio',
+    ],
+  },
 ];
