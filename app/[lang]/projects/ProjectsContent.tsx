@@ -5,8 +5,12 @@ import SpotlightBackground from '../../components/SpotlightBackground';
 import PageTransition from '../../components/PageTransition';
 import ProjectCard from '../../components/ProjectCard';
 import { projectsCopy } from '../../locales';
-import { webProjects } from '../../data/webProjects';
-import { mobileProjects } from '../../data/mobileProjects';
+import {
+  cliProjects,
+  mobileProjects,
+  webProjects,
+  type Project,
+} from '../../data/projects';
 import type { ShapeDefinition } from '../../components/SpotlightBackground';
 
 const staggerContainer = {
@@ -61,6 +65,11 @@ interface Props {
 export default function ProjectsContent({ lang }: Props) {
   const copy =
     projectsCopy[lang as keyof typeof projectsCopy] ?? projectsCopy.en;
+  const sections: { title: string; items: Project[] }[] = [
+    { title: copy.webSection, items: webProjects },
+    { title: copy.mobileSection, items: mobileProjects },
+    { title: copy.cliSection, items: cliProjects },
+  ];
 
   return (
     <SpotlightBackground
@@ -76,58 +85,33 @@ export default function ProjectsContent({ lang }: Props) {
           </p>
         </div>
 
-        {/* Web Projects Section */}
-        {webProjects.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl sm:text-3xl font-bold text-content mb-6">
-              {copy.webSection}
-            </h2>
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}>
-              {webProjects.map((project) => (
-                <motion.div key={project.id} variants={cardVariant}>
-                  <ProjectCard
-                    project={project}
-                    lang={lang}
-                    labels={{
-                      viewDemo: copy.viewDemo,
-                      techStack: copy.techStack,
-                    }}
-                  />
+        {sections.map(
+          (section) =>
+            section.items.length > 0 && (
+              <section key={section.title} className="mb-16 last:mb-0">
+                <h2 className="text-2xl sm:text-3xl font-bold text-content mb-6">
+                  {section.title}
+                </h2>
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  initial="hidden"
+                  animate="visible"
+                  variants={staggerContainer}>
+                  {section.items.map((project) => (
+                    <motion.div key={project.id} variants={cardVariant}>
+                      <ProjectCard
+                        project={project}
+                        lang={lang}
+                        labels={{
+                          viewProject: copy.viewProject,
+                          liveDemo: copy.liveDemo,
+                        }}
+                      />
+                    </motion.div>
+                  ))}
                 </motion.div>
-              ))}
-            </motion.div>
-          </section>
-        )}
-
-        {/* Mobile Projects Section */}
-        {mobileProjects.length > 0 && (
-          <section>
-            <h2 className="text-2xl sm:text-3xl font-bold text-content mb-6">
-              {copy.mobileSection}
-            </h2>
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}>
-              {mobileProjects.map((project) => (
-                <motion.div key={project.id} variants={cardVariant}>
-                  <ProjectCard
-                    project={project}
-                    lang={lang}
-                    labels={{
-                      viewDemo: copy.viewDemo,
-                      techStack: copy.techStack,
-                    }}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </section>
+              </section>
+            ),
         )}
       </PageTransition>
     </SpotlightBackground>

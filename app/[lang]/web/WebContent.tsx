@@ -5,7 +5,7 @@ import SpotlightBackground from '../../components/SpotlightBackground';
 import PageTransition from '../../components/PageTransition';
 import ProjectCard from '../../components/ProjectCard';
 import { webCopy } from '../../locales';
-import { webProjects } from '../../data/webProjects';
+import { webProjects } from '../../data/projects';
 import { webShapes } from './webShapes';
 
 const staggerContainer = {
@@ -49,7 +49,7 @@ export default function WebContent({ lang }: Props) {
                 <ProjectCard
                   project={project}
                   lang={lang}
-                  labels={{ viewDemo: copy.viewDemo, techStack: copy.techStack }}
+                  labels={{ viewProject: copy.viewProject, liveDemo: copy.liveDemo }}
                 />
               </motion.div>
             ))}
