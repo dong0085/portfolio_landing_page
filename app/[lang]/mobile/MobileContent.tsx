@@ -6,7 +6,7 @@ import PageTransition from '../../components/PageTransition';
 import ProjectCard from '../../components/ProjectCard';
 import MobileEmptyState from '../../components/MobileEmptyState';
 import { mobileCopy } from '../../locales';
-import { mobileProjects } from '../../data/mobileProjects';
+import { mobileProjects } from '../../data/projects';
 import { mobileShapes } from './mobileShapes';
 
 const staggerContainer = {
@@ -50,7 +50,7 @@ export default function MobileContent({ lang }: Props) {
                 <ProjectCard
                   project={project}
                   lang={lang}
-                  labels={{ viewDemo: copy.viewDemo, techStack: copy.techStack }}
+                  labels={{ viewProject: copy.viewProject, liveDemo: copy.liveDemo }}
                 />
               </motion.div>
             ))}
